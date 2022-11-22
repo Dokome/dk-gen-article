@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>哲理的山路十八湾</title>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #fafafa;
+        width: 100vw;
+        height: 100vh;
+        padding: 5vh 10vw;
+        box-sizing: border-box;
+        overflow-y: auto;
+      }
+
+      .input-wrapper {
+        margin: 5vh auto;
+        padding: 0 5vw;
+        box-sizing: border-box;
+      }
+
+      section {
+        text-indent: 2rem;
+        margin-top: 3vh;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center">哲理的山路十八湾</h1>
+    <div class="input-group mb-3 input-wrapper">
+      <input
+        type="text"
+        id="title"
+        class="form-control"
+        placeholder="在此输入标题"
+      />
+      <button onclick="_get_result()" type="button" class="btn btn-primary">
+        生成文章
+      </button>
+    </div>
+    <div id="content"></div>
+    <script src="./dist/index.js"></script>
+    <script>
+      var _title = document.getElementById('title')
+      var _content = document.getElementById('content')
+
+      function _get_result() {
+        var text = $gen
+          .run(_title.value)
+          .map(_t => '<section>' + _t + '</section>')
+          .join('')
+        _content.innerHTML = text + '<section style="height: 10vh"><section />'
+      }
+    </script>
+  </body>
+</html>
